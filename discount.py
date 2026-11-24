@@ -1,10 +1,14 @@
-def final_total(subtotal_cents, loyalty=False):
-    """Return the total after discounts."""
-    rate = 0.0
-    if subtotal_cents > 10000:
-        rate = 0.10
+def final_total(subtotal_cents: int, loyalty: bool = False) -> int:
+    """Return the final total in integer cents (see spec.md)."""
+    if subtotal_cents <= 0:
+        raise ValueError("subtotal must be greater than 0")
+    if subtotal_cents >= 10000:
+        tier = 10
     elif subtotal_cents >= 5000:
-        rate = 0.05
+        tier = 5
+    else:
+        tier = 0
+    total = subtotal_cents - subtotal_cents * tier // 100
     if loyalty:
-        rate += 0.02
-    return round(subtotal_cents * (1 - rate))
+        total = total - total * 2 // 100
+    return total
