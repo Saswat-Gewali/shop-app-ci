@@ -15,7 +15,7 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-         display_report: true
+          display_report: true
           prompt: "List every TODO in the .py files and say which ones have no ticket number."
           claude_args: |
             --max-turns 8
