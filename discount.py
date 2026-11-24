@@ -1,3 +1,4 @@
+# small change
 def final_total(subtotal_cents, loyalty=False):
     """Return the total after discounts."""
     rate = 0.0
